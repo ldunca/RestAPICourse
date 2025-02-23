@@ -1,40 +1,33 @@
 @url=https://localhost:7094/api/movies
 
 ### POST create movie
-
-POST  {{url}}
+POST {{url}}
 Content-Type: application/json
 
 {
-  "Title": "Nick the Greek",
-  "YearOfRelease": 2022,
+  "Title": "Lucian the Greek",
+  "YearOfRelease": 2023,
   "Genres": [
     "Comedy"
   ]
 }
 
-<> 2025-02-23T191436.201.json
-<> 2025-02-23T190921.201.json
-<> 2025-02-23T184226.201.json
-<> 2025-02-23T182906.201.json
+### Get by slug
+@slug=nick-the-greek-2022
+GET {{url}}/{{slug}}
+
 
 ### GET all movies
-
 GET {{url}}
 Accept: application/json
 
-<> 2025-02-23T191501.200.json
-<> 2025-02-23T184234.200.json
-
 ### Get by Id
-@id = 8496c859-c35d-4702-9465-699f70bc1755
+@id = 7a4dc447-fb68-4bcf-92df-6d3826698724
 GET {{url}}/{{id}}
 Accept: application/json
 
 ### Update movie
-
-@idToUpdate = c81e6f1a-96f8-460d-9c69-1a5a73327525
-PUT {{url}}/{{idToUpdate}}
+PUT {{url}}/{{id}}
 Content-Type: application/json
 
 {
@@ -45,8 +38,5 @@ Content-Type: application/json
   ]
 }
 
-
 ### Delete movie
-
-@idToDelete=c81e6f1a-96f8-460d-9c69-1a5a73327525
-DELETE {{url}}/{{idToDelete}}
+DELETE {{url}}/{{id}}
