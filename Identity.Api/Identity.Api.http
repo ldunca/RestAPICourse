@@ -1,0 +1,16 @@
+@url = http://localhost:5017
+
+POST {{url}}/token
+Accept: application/json
+Content-Type: application/json
+
+{
+  "userid": "df02e3d8-b7cc-43a4-b622-8d5a6c8b1b9f",
+  "email": "lucian.dunca@gmail.com",
+  "customClaims": {
+    "admin": false,
+    "trusted_member": false
+  }
+}
+
+###

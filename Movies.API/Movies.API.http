@@ -1,8 +1,10 @@
 @url=http://localhost:5112/api/movies
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI1YzY0ZjVhNi01Yjk3LTRiODYtOTAwZS04MzI5MjE4NGY5Y2QiLCJzdWIiOiJsdWNpYW4uZHVuY2FAZ21haWwuY29tIiwiZW1haWwiOiJsdWNpYW4uZHVuY2FAZ21haWwuY29tIiwidXNlcmlkIjoiZGYwMmUzZDgtYjdjYy00M2E0LWI2MjItOGQ1YTZjOGIxYjlmIiwiYWRtaW4iOmZhbHNlLCJ0cnVzdGVkX21lbWJlciI6ZmFsc2UsIm5iZiI6MTc0MDgzMTQxOSwiZXhwIjoxNzQwODYwMjE5LCJpYXQiOjE3NDA4MzE0MTksImlzcyI6Imh0dHBzOi8vaWQuZHVuY2EuY29tIiwiYXVkIjoiaHR0cHM6Ly9tb3ZpZXMuZHVuY2EuY29tIn0.EhqjKWt7zH0qXI0FwBreuId24tsJrWD4TouYSTkD1ys
 
 ### POST create movie
 POST {{url}}
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "Title": "Lucian the Greek2",
@@ -13,13 +15,14 @@ Content-Type: application/json
 }
 
 ### Get by slug
-@slug=lucian-the-greek2-2024
+@slug=movie1-2024
 GET {{url}}/{{slug}}
 
 
 ### GET all movies
 GET {{url}}
 Accept: application/json
+
 
 ### Get by Id
 @id = d5488162-2bd5-4e0b-8a5f-2f73d928ff30
