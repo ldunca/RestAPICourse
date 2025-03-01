@@ -1,5 +1,6 @@
 using Dapper;
 using Movies.Application.Database;
+using Movies.Application.Models;
 
 namespace Movies.Application.Repository;
 
@@ -21,8 +22,8 @@ public class RatingRepository : IRatingRepository
                     insert into ratings(movieid, userid, rating)
                     values(@movieId, @userId, @rating)
                     on conflict (userid, movieid) do update set rating = @rating;
-                """, new { movieId, userId, rating}, cancellationToken: token));
-        
+                """, new { movieId, userId, rating }, cancellationToken: token));
+
         return result > 0;
     }
 
@@ -36,6 +37,18 @@ public class RatingRepository : IRatingRepository
                 from ratings r 
                 where movieid = @movieId
                 """, new { movieId }, cancellationToken: token));
+    }
+
+    public async Task<bool> DeleteAsync(Guid movieId, Guid userId, CancellationToken token = default)
+    {
+        using var connection = await _dbConnectionFactory.CreateConnectionAsync(token);
+        var result = await connection.ExecuteAsync(
+            new CommandDefinition(
+                """
+                delete from ratings 
+                where movieid = @movieId and userid = @userId;
+                """, new { movieId, userId }, cancellationToken: token));
+        return result > 0;
     }
 
     public async Task<(float? Rating, int? UserRating)> GetUserRatingAsync(Guid movieId, Guid userId,
@@ -55,5 +68,20 @@ public class RatingRepository : IRatingRepository
                 from ratings r 
                 where movieid = @movieId
                 """, new { movieId, userId }, cancellationToken: token));
+    }
+
+    public async Task<IEnumerable<MovieRating>> GetUserRatingsAsync(Guid userId, CancellationToken token = default)
+    {
+        using var connection = await _dbConnectionFactory.CreateConnectionAsync(token);
+        var ratings = await connection.QueryAsync<MovieRating>(
+            new CommandDefinition(
+                """
+                select r.rating, r.movieid, m.slug
+                from ratings r
+                inner join movies m on r.movieid = m.id 
+                where userid = @userId
+                
+                """, new { userId}, cancellationToken: token));
+        return ratings;
     }
 }
