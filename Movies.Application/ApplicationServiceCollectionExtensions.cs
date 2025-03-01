@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Movies.Application.Database;
 using Movies.Application.Repository;
 using Movies.Application.Services;
+using FluentValidation;
 using Npgsql;
 
 namespace Movies.Application;
@@ -13,6 +14,7 @@ public static class ApplicationServiceCollectionExtensions
     {
         services.AddSingleton<IMovieRepository, MovieRepository>();
         services.AddSingleton<IMovieService, MovieService>();
+        services.AddValidatorsFromAssemblyContaining<IApplicationMarker>(ServiceLifetime.Singleton);
         return services;
     }
 

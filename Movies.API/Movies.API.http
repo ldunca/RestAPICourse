@@ -1,19 +1,19 @@
-@url=https://localhost:7094/api/movies
+@url=http://localhost:5112/api/movies
 
 ### POST create movie
 POST {{url}}
 Content-Type: application/json
 
 {
-  "Title": "Lucian the Greek",
-  "YearOfRelease": 2023,
+  "Title": "Lucian the Greek2",
+  "YearOfRelease": 2024,
   "Genres": [
     "Comedy"
   ]
 }
 
 ### Get by slug
-@slug=nick-the-greek-2022
+@slug=lucian-the-greek2-2024
 GET {{url}}/{{slug}}
 
 
@@ -22,7 +22,7 @@ GET {{url}}
 Accept: application/json
 
 ### Get by Id
-@id = 7a4dc447-fb68-4bcf-92df-6d3826698724
+@id = d5488162-2bd5-4e0b-8a5f-2f73d928ff30
 GET {{url}}/{{id}}
 Accept: application/json
 
