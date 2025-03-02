@@ -23,6 +23,6 @@ public partial class Movie
         return $"{sluggedTitle}-{YearOfRelease}";
     }
 
-    [GeneratedRegex("[^0-9A-Za-z _-]", RegexOptions.NonBacktracking, 5)]
+    [GeneratedRegex("[^0-9A-Za-z _-]", RegexOptions.NonBacktracking, 10)]
     private static partial Regex SlugRegex();
 }

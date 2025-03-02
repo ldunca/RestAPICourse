@@ -1,5 +1,5 @@
 @url=http://localhost:5112/api/movies
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiMTNmZjMyNi05YTNmLTRkOTktYmJhNy1kNGFlMTNkYzdhNjAiLCJzdWIiOiJsdWNpYW4uZHVuY2FAZ21haWwuY29tIiwiZW1haWwiOiJsdWNpYW4uZHVuY2FAZ21haWwuY29tIiwidXNlcmlkIjoiZGYwMmUzZDgtYjdjYy00M2E0LWI2MjItOGQ1YTZjOGIxYjlmIiwiYWRtaW4iOmZhbHNlLCJ0cnVzdGVkX21lbWJlciI6dHJ1ZSwibmJmIjoxNzQwODYxMTU4LCJleHAiOjE3NDA4ODk5NTgsImlhdCI6MTc0MDg2MTE1OCwiaXNzIjoiaHR0cHM6Ly9pZC5kdW5jYS5jb20iLCJhdWQiOiJodHRwczovL21vdmllcy5kdW5jYS5jb20ifQ.Ddw5nYdOPGn2tLjdN_chWzJqx8StRIUxF1MymOA9_vg
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyOWQ0ODY5Ni00NzdjLTRmYTUtYTYwZi0zNDhmNmJkMzFmMjAiLCJzdWIiOiJsdWNpYW4uZHVuY2FAZ21haWwuY29tIiwiZW1haWwiOiJsdWNpYW4uZHVuY2FAZ21haWwuY29tIiwidXNlcmlkIjoiZGYwMmUzZDgtYjdjYy00M2E0LWI2MjItOGQ1YTZjOGIxYjlmIiwiYWRtaW4iOmZhbHNlLCJ0cnVzdGVkX21lbWJlciI6dHJ1ZSwibmJmIjoxNzQwOTA3MTkzLCJleHAiOjE3NDA5MzU5OTMsImlhdCI6MTc0MDkwNzE5MywiaXNzIjoiaHR0cHM6Ly9pZC5kdW5jYS5jb20iLCJhdWQiOiJodHRwczovL21vdmllcy5kdW5jYS5jb20ifQ.98qRHD0gZrXlk0YcSr_1-JBKUteHQjG7AFYI-tIz_dg
 
 ### POST create movie
 POST {{url}}
@@ -34,12 +34,12 @@ Authorization: Bearer {{token}}
 
 
 ### Get by slug
-@slug=movie1-2024
+@slug=lucian-the-greek2-2024
 GET {{url}}/{{slug}}
 
 
 ### GET all movies
-GET {{url}}
+GET {{url}}?sortBy-title&title=ball&page=1&pageSize=20
 Accept: application/json
 
 

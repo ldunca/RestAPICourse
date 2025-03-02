@@ -32,7 +32,7 @@ public class RatingsController : ControllerBase
     public async Task<IActionResult> DeleteRating([FromRoute] Guid id, CancellationToken token)
     {
         var userId = HttpContext.GetUserId();
-        var result = await _ratingService.DeleteAsync(id, userId.Value, token);
+        var result = await _ratingService.DeleteAsync(id, userId!.Value, token);
         return result ? Ok() : NotFound();
     }
 
@@ -41,7 +41,7 @@ public class RatingsController : ControllerBase
     public async Task<IActionResult> GetUserRatingsAsync(CancellationToken token = default)
     {
         var userId = HttpContext.GetUserId();
-        var ratings = await _ratingService.GetRattingsForUserAsync(userId.Value, token);
+        var ratings = await _ratingService.GetRattingsForUserAsync(userId!.Value, token);
         var ratingsResponse = ratings.MapToResponse();
         return Ok(ratingsResponse);
     }
